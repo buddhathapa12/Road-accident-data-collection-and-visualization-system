@@ -1,0 +1,6 @@
+https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorRenderType.html
+https://gis.stackexchange.com/questions/239185/openlayers-has-wrong-overlay-positioning-while-zooming-out
+https://openlayers.org/en/latest/examples/icon.html
+https://openlayers.org/en/latest/examples/overlay.html
+https://openlayers.org/en/latest/examples/image-vector-layer.html
+https://openlayers.org/en/latest/examples/icon-negative.html

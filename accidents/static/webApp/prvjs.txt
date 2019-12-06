@@ -1,0 +1,241 @@
+//#region initailize variables
+
+//Events that fire when page is loaded
+var onloaded=[];
+
+//DOM value of sidebar
+var sidebar=null;
+
+//Active content on menubar in the sidebar
+var sidebarMenuContent=0;
+
+//Active content in the sidebar
+var sidebarContent='';
+//#endregion
+
+//#region body loaded event
+document.addEventListener("DOMContentLoaded",function(){
+    for(var i=0;i<onloaded.length;i++){
+        onloaded[i]();
+    }
+});
+//#endregion
+
+//#region loadMap
+import Overlay from 'ol/Overlay';
+import { read } from 'fs';
+function loadMap(){
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          //Set center
+          center: ol.proj.transform([85.31, 27.71], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 7,
+          extent: ol.proj.transformExtent([84.31,26.71,86.31,28.71], 
+            'EPSG:4326', 'EPSG:3857')
+        })
+      });
+
+      //truck.86e6689a.png
+      //bus.e224b6f8.png
+      //car.9a9c5182.png
+      var marker;
+      for(var j=30;j<50;j+=0.25){
+        for(var i=60;i<81;i+=0.25){
+          var rnd=Math.random();
+          //var alldataKTM=[getESPG(27+(rnd+i)/100,85+((rnd+j))/100),getESPG(27+((rnd+i)+0.25)/100,85+((rnd+j))/100),getESPG(27+((rnd+i)+0.25)/100,85+((rnd+j)+0.25)/100),getESPG(27+((rnd+i))/100,85+((rnd+j)+0.25)/100)];
+
+          var feature=new ol.Feature({
+            geometry:new ol.geom.Point(getESPG(27+(rnd+i)/100,85+((rnd+j))/100)),
+            //geometry:new ol.geom.Circle(getESPG(27+(rnd+i)/100,85+((rnd+j))/100),rnd*50),
+            
+          })
+          var rnd=(Math.random()+1)/2;
+          
+          var style;
+          if(rnd>0.7){
+            style=new ol.style.Style({
+            image: new ol.style.Icon({
+              anchor: [0.5, 0.5],
+              anchorXUnits: 'fraction',
+              anchorYUnits: 'fraction',
+              src: '/bike.b6da0fa9.png',
+              crossOrigin: 'anonymous',
+              color:'#8959A8'
+            })
+          });
+          }
+          else if(rnd>0.4){
+            style=new ol.style.Style({
+              image: new ol.style.Icon({
+                anchor: [0.5, 0.5],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '/truck.86e6689a.png',
+                crossOrigin: 'anonymous',
+                color:'#8959A8'
+              })
+            });
+          }
+          else if(rnd>0.3){
+            style=new ol.style.Style({
+              image: new ol.style.Icon({
+                anchor: [0.5, 0.5],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '/bus.e224b6f8.png',
+                crossOrigin: 'anonymous',
+                color:'#8959A8'
+              })
+            });
+          }
+          else{
+            style=new ol.style.Style({
+              image: new ol.style.Icon({
+                anchor: [0.5, 0.5],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '/car.9a9c5182.png',
+                crossOrigin: 'anonymous',
+                color:'#8959A8'
+              })
+            });
+          }
+          feature.setStyle(style);
+      var vectorSource1 = new ol.source.Vector({
+        features: [feature]
+      });
+      var color='rgba('+rnd*255+',0,0,'+(rnd-0.3)+')';
+      var vectorLayer1 = new ol.layer.Vector({
+        source: vectorSource1,
+        /*style:new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: 'rgba(0,0,0,0.5)',
+            width: 1,
+          }),
+          fill: new ol.style.Fill({
+            color: color
+          }),
+        }),
+        */
+        
+      });
+      map.addLayer(vectorLayer1); 
+      
+    }
+  }
+  
+}
+onloaded.push(loadMap);
+//#endregion
+
+//#region Show active showbar indicator
+function renderSidebar(){
+  sidebar={
+    value:document.querySelector(".sidebar"),
+    alltexts:document.querySelectorAll("text"),
+    mask:document.querySelector("#maskingRECT"),
+    movingbar:document.querySelector(".moving"),
+    contentContainer:document.querySelector(".sidebarContent")
+  }
+  {
+    var padding=10;
+    var presentX=10;
+    for(var i=0;i<sidebar.alltexts.length;i++){
+      sidebar.alltexts[i].setAttribute("x",presentX);
+      presentX+=sidebar.alltexts[i].getBoundingClientRect().width+padding;
+    }
+  }
+  animateMenuContent(sidebar.alltexts[sidebarMenuContent].innerHTML);
+  sidebar.movingbar.style.transform="translateX("+(sidebar.alltexts[sidebarMenuContent].getBoundingClientRect().width/2+10)+"px) scaleX("+sidebar.alltexts[sidebarMenuContent].getBoundingClientRect().width+")";
+  sidebar.mask.addEventListener("click",function(e){
+    for(var i=0;i<sidebar.alltexts.length;i++){
+      if(i!=sidebarMenuContent){
+        console.log(i);
+        if(e.x>(sidebar.alltexts[i].getBoundingClientRect().left)&&e.x<sidebar.alltexts[i].getBoundingClientRect().right){
+          animateMenuContent(sidebar.alltexts[i].innerHTML);
+          var width=0;
+          if(sidebar.movingbar.getBoundingClientRect().left>sidebar.alltexts[i].getBoundingClientRect().left){
+            width=sidebar.movingbar.getBoundingClientRect().right-sidebar.alltexts[i].getBoundingClientRect().left;
+            sidebar.movingbar.style.transform="translateX("+(-width/2+sidebar.alltexts[sidebarMenuContent].getBoundingClientRect().right-sidebar.value.getBoundingClientRect().left
+            )+"px) scaleX("+width+")";
+          }
+          else{
+            width=sidebar.alltexts[i].getBoundingClientRect().right-sidebar.movingbar.getBoundingClientRect().left;
+            sidebar.movingbar.style.transform="translateX("+(width/2+sidebar.alltexts[sidebarMenuContent].getBoundingClientRect().left-sidebar.value.getBoundingClientRect().left
+            )+"px) scaleX("+width+")";
+          }
+          const prvActive=i;
+          setTimeout(() => {
+            sidebar.movingbar.style.transform="translateX("+(sidebar.alltexts[prvActive].getBoundingClientRect().width/2+sidebar.alltexts[prvActive].getBoundingClientRect().left
+            -sidebar.value.getBoundingClientRect().left
+            )+"px) scaleX("+sidebar.alltexts[prvActive].getBoundingClientRect().width+")";
+          }, 200);
+          
+          sidebarMenuContent=i;
+          break;
+        }
+      }
+    }
+  });
+  sidebar.mask.addEventListener("mousemove",function(e){
+    for(var i=0;i<sidebar.alltexts.length;i++){
+      if(e.x>(sidebar.alltexts[i].getBoundingClientRect().left)&&e.x<sidebar.alltexts[i].getBoundingClientRect().right){
+        sidebar.alltexts[i].style.fontWeight="800";
+      }
+      else
+        sidebar.alltexts[i].style.fontWeight="500";
+    }
+  });
+  sidebar.mask.addEventListener("mouseout",function(e){
+    for(var i=0;i<sidebar.alltexts.length;i++){
+        sidebar.alltexts[i].style.fontWeight="500";
+    }
+  });
+}
+//#endregion
+onloaded.push(renderSidebar);
+
+//#region sidebar function
+function makeActive(){
+  sidebar.movingbar.style.transform="translateX("+(sidebar.alltexts[sidebarMenuContent].getBoundingClientRect().width/2+10)+"px) scaleX("+sidebar.alltexts[sidebarMenuContent].getBoundingClientRect().width+")";
+}
+
+function animateMenuContent(value){
+  if(value!=sidebarContent){
+    if(sidebarContent==''){
+      sidebar.contentContainer.querySelector("[contentid='"+value+"']").style.opacity= "1";
+      if(sidebar.contentContainer.querySelector("[contentid='"+value+"']").classList.contains("active"))
+        sidebar.contentContainer.querySelector("[contentid='"+value+"']").classList.remove("active");
+      sidebar.contentContainer.querySelector("[contentid='"+value+"']").style.transform="translateX("+(sidebar.contentContainer.getBoundingClientRect().width*4)+"px)";
+      setTimeout(() => {
+        sidebar.contentContainer.querySelector("[contentid='"+value+"']").classList+=" active";
+        sidebar.contentContainer.querySelector("[contentid='"+value+"']").style.transform="translateX(0px)";
+      },10);
+    }
+    else{
+      sidebar.contentContainer.querySelector("[contentid='"+sidebarContent+"']").style.transform="translateX("+(-sidebar.contentContainer.getBoundingClientRect().width)+"px)";
+      sidebar.contentContainer.querySelector("[contentid='"+value+"']").style.opacity= "1";
+      if(sidebar.contentContainer.querySelector("[contentid='"+value+"']").classList.contains("active"))
+        sidebar.contentContainer.querySelector("[contentid='"+value+"']").classList.remove("active");
+      sidebar.contentContainer.querySelector("[contentid='"+value+"']").style.transform="translateX("+(sidebar.contentContainer.getBoundingClientRect().width*4)+"px)";
+      setTimeout(() => {
+        sidebar.contentContainer.querySelector("[contentid='"+value+"']").classList+=" active";
+        sidebar.contentContainer.querySelector("[contentid='"+value+"']").style.transform="translateX(0px)";
+      }, 10);
+    }
+    sidebarContent=value;
+  }
+}
+//#endregion
+
+//#region map helper functions
+function getESPG(lon,lat){
+  return ol.proj.transform([lat, lon], 'EPSG:4326', 'EPSG:3857');
+}
+//#endregion

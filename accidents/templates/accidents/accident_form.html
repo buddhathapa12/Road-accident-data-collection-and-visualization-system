@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="DataHeader">
+    <div class="DataHeaderText">प्रहरी कार्यालय</div>
+    <div class="DataBody">
+        <div class="item" mydata="police_office_name">नाम<input class="normalinput" /></div>
+        <div class="item" mydata="police_office_district">जिल्ला<input class="normalinput" /></div>
+    </div>
+  </div>
+<div class="DataHeader">
+    <div class="DataHeaderText">मिती</div>
+    <div class="DataBody">
+        <div class="item">गते<input class="normalinput" /></div>
+        <div class="item selectInside">महिना
+            <ul class="normalselect">
+                <div class="selection">
+                    बैसाख
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">बैसाख</li>
+                        <li value="1">जेठ</li>
+                        <li value="2">असार</li>
+                        <li value="3">श्रवण</li>
+                        <li value="4">भदौ</li>
+                        <li value="5">असोज</li>
+                        <li value="6">कर्तिक</li>
+                        <li value="7">मंसिर</li>
+                        <li value="8">पुस</li>
+                        <li value="9">माघ</li>
+                        <li value="10">फाल्गुन</li>
+                        <li value="11">चैत्र</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item">बर्स<input class="normalinput" /></div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">समय</div>
+    <div class="DataBody">
+        <div class="item">घण्टा<input class="normalinput" /></div>
+        <div class="item">मीनेट<input class="normalinput" /></div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">दुर्घटना विवरण</div>
+    <div class="DataBody">
+        <div class="item" mydata='no_of_vehicle_involved'>संलग्न सवारीको संख्या<input class="normalinput" /></div>
+        <div class="item" mydata='no_of_driver_involved'>हताहात ड्राइभरको संख्या<input class="normalinput" /></div>
+        <div class="item" mydata='no_of_passanger_involved'>हताहात यात्रुको संख्या<input class="normalinput" /></div>
+        <div class="item" mydata='no_of_pedestrian_involved'>हताहात पैदल यात्रुको संख्या<input class="normalinput" /></div>
+        <div class="item selectInside">दुर्घटनको गम्भीर्यत
+            <ul class="normalselect" mydata='accident_seriousness'>
+                <div class="selection">
+                    मृत्यु
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">मृत्यु</li>
+                        <li value="1">गंभीर घाइते</li>
+                        <li value="2">साधारण घाइते</li>
+                        <li value="3">क्षती मात्र</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सवारी नियंत्रण
+            <ul class="normalselect" mydata='vehicle_control'>
+                <div class="selection">
+                    छैन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छैन</li>
+                        <li value="1">केंद्र रेखा मात्र</li>
+                        <li value="2">जेब्रा क्रासिंघ </li>
+                        <li value="3">प्रहरी भएको</li>
+                        <li value="4">ट्राफिक संकेत</li>
+                        <li value="5">रोक, हेर र जाऊ</li>
+                        <li value="6">अन्य</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">ठक्करको किसिम
+            <ul class="normalselect" mydata='collision_type'>
+                <div class="selection">
+                    अगाडि अगाडिबाट
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">अगाडि अगाडिबाट</li>
+                        <li value="1">अगाडि पछाडि</li>
+                        <li value="2">९०° कोडमा</li>
+                        <li value="3">छेउबाट हिंडेको</li>
+                        <li value="4">पल्टेको </li>
+                        <li value="5">बाटोको बस्तुलाई हर्कांएको</li>
+                        <li value="6">बाटोको बाहिरको बस्तुलाई हर्कांएको</li>
+                        <li value="7">पार्क गरेको गडीलाई हिर्काएको</li>
+                        <li value="8">बटुवालाई हिर्काएको</li>
+                        <li value="9">जनावरलाई हिर्काएको</li>
+                        <li value="10">अन्य</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">सडकको अवस्था</div>
+    <div class="DataBody">
+        <div class="item selectInside">सडकको विवरण
+            <ul class="normalselect" mydata='road_condition'>
+                <div class="selection">
+                    सीधा र समम
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">सीधा र समम</li>
+                        <li value="1">घुमउरो मात्र</li>
+                        <li value="2">उकलो ओरालो मात्र</li>
+                        <li value="3">घुमउरो र उकलो ओरालो</li>
+                        <li value="4">पुल</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सडकको सतह
+            <ul class="normalselect" mydata='road_surface'>
+                <div class="selection">
+                    पिच
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">पिच</li>
+                        <li value="1">ग्राभेल</li>
+                        <li value="2">माटो</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सडकको अवस्था
+            <ul class="normalselect" mydata='road_condition'>
+                <div class="selection">
+                    राम्रो
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">राम्रो</li>
+                        <li value="1">बिग्रेको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सतहको अवस्था
+            <ul class="normalselect" mydata='surface_condition'>
+                <div class="selection">
+                    सुक्खा
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">सुक्खा</li>
+                        <li value="1">भिजको</li>
+                        <li value="2">हिलो भएको</li>
+                        <li value="3">पानी जमेको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सडक कार्य
+            <ul class="normalselect">
+                <div class="selection" mydata='road_construction'>
+                    छ
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छ</li>
+                        <li value="1">छैन</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">हर्काएर भागेको
+            <ul class="normalselect" mydata='hit_and_run'>
+                <div class="selection">
+                    हो
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">हो</li>
+                        <li value="1">होइन</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">प्रकाश
+            <ul class="normalselect" mydata='lighting_condition'>
+                <div class="selection">
+                    दिन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">दिन</li>
+                        <li value="1">बत्ती निभेको</li>
+                        <li value="2">बत्ती बालेको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">मौसम
+            <ul class="normalselect" mydata='weather_condition'>
+                <div class="selection">
+                    सफा
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">सफा</li>
+                        <li value="1">पानी परेको</li>
+                        <li value="2">कुहीरो/हूस्सु</li>
+                        <li value="3">धुलो/धुवां</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सवारी चल्ने
+            <ul class="normalselect" mydata='road_runway_type'>
+                <div class="selection">
+                    एक तर्फी
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">एक तर्फी</li>
+                        <li value="1">दुई तर्फी</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">जंक्सनको किसिम
+            <ul class="normalselect" mydata='intersection_type'>
+                <div class="selection">
+                    जंक्सन होइन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">जंक्सन होइन</li>
+                        <li value="1">Y</li>
+                        <li value="1">+</li>
+                        <li value="1">O</li>
+                        <li value="1">T</li>
+                        <li value="1">⅂</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">ठाउँको विवरण</div>
+    <div class="DataBody">
+        <div class="item" mydata='accident_place_name'>सहर/गाउँको नाम<input class="normalinput" /></div>
+        <div class="item">स्थान<input class="normalinput" /></div>
+        <div class="item" mydata='accident_location_longitude'>लांगितउड<input class="normalinput" /></div>
+        <div class="item" mydata='accident_location_latitude'>ए्याटीट्यूड<input class="normalinput" /></div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">कार्यालय प्रयोग</div>
+    <div class="DataBody">
+        <div class="item">सहर/गाउँको नंबर<input class="normalinput" /></div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">सडकको विवरण</div>
+    <div class="DataBody">
+        <div class="item" mydata='road_number'>सडक नंबर<input class="normalinput" /></div>
+        <div class="item" mydata='road_length'>कि. मी. <input class="normalinput" /></div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">प्रहरीको विवरण</div>
+    <div class="DataBody">
+        <div class="item" mydata='investigation_officers_name'>अनुसंधान अधिकृत नाम<input class="normalinput" /></div>
+        <div class="item" mydata='investigation_officers_name_standard'>अनुसंधान अधिकृत दर्जा<input class="normalinput" /></div>
+        <div class="item" mydata='reinvestigation_officers_name'>पुनरावलोकन अधिकृत नाम<input class="normalinput" /></div>
+        <div class="item" mydata='reinvestigation_officers_name_standard'>पुनरावलोकन अधिकृत दर्जा<input class="normalinput" /></div>
+        <div class="item">सिफारिश भएको कारबाही<input class="normalinput" /></div>
+        <div class="item">साक्षीहरु<input class="normalinput" /></div>
+        <div class="item" mydata='noted_action'>अन्य जानकारी<input class="normalinput" /></div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">गाडी नंबर 1</div>
+    <div class="DataBody">
+        <div class="item" mydata='vehicle_registration_no'>सवारी दर्ता नंबर<input class="normalinput" /></div>
+        <div class="item" mydata='vehicle_owner_name'>सवारी धनिको नाम<input class="normalinput" /></div>
+        <div class="item" mydata='vehicle_owner_address'>सवारी धनिको ठेगाना<input class="normalinput" /></div>
+        <div class="item selectInside">तेस्रो पक्ष बीमा
+            <ul class="normalselect">
+                <div class="selection">
+                    छ
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छ</li>
+                        <li value="1">छैन</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item" mydata='name_of_vehicle_company'>निर्माता कंपनी<input class="normalinput" /></div>
+        <div class="item selectInside">सवारीको किसिम
+            <ul class="normalselect" mydata='vehicle_type'>
+                <div class="selection">
+                    बाईसाइकिल
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">बाईसाइकिल</li>
+                        <li value="1">रिक्शा</li>
+                        <li value="2">मोटरसाइकिल</li>
+                        <li value="3">अटोरिक्शा</li>
+                        <li value="4">कार</li>
+                        <li value="5">पीक अप</li>
+                        <li value="6">मिनीबस</li>
+                        <li value="7">बस</li>
+                        <li value="8">ट्रक</li>
+                        <li value="9">अन्य</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सवारीको गतिबिधी
+            <ul class="normalselect" mydata='vehicle_action'>
+                <div class="selection">
+                    दायाँ घूमेको
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">दायाँ घूमेको</li>
+                        <li value="1">बायाँ घूमेको</li>
+                        <li value="2">U-घूमेको</li>
+                        <li value="3">क्रस ट्राफिक</li>
+                        <li value="4">मिल्ने कार्य</li>
+                        <li value="5">छुट्टिने कार्य</li>
+                        <li value="6">उछिन्ने कार्य</li>
+                        <li value="7">अगाडि गुडीरहेको</li>
+                        <li value="8">पक्षडी गुडीरहेको</li>
+                        <li value="9">एक्कासी स्टार्ट</li>
+                        <li value="10">एक्कासी रोकेको</li>
+                        <li value="11">सडक बाहिर पार्क</li>
+                        <li value="12">सडकमा पार्क</li>
+                        <li value="13">अन्य</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">भारिको विवरण
+            <ul class="normalselect" mydata='load_condition'>
+                <div class="selection">
+                    ठीक कानून मेल्डो
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">ठीक कानून मेल्डो</li>
+                        <li value="1">बड़ी भारी</li>
+                        <li value="2">असुरक्षित भारी</li>
+                        <li value="3">गडिबाट बाहिर निस्केको भारी</li>
+                        <li value="4">अन्य नामेल्डो भार</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">त्रुटिहरु
+            <ul class="normalselect" mydata='mistake'>
+                <div class="selection">
+                    छैन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छैन</li>
+                        <li value="1">ब्रेकहरु</li>
+                        <li value="2">स्तेरिंग</li>
+                        <li value="3">टायरहरु</li>
+                        <li value="4">बत्तीहरु</li>
+                        <li value="5">एकभन्दा बढी</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">धनिको किसिम
+            <ul class="normalselect" mydata='owner_type'>
+                <div class="selection">
+                    सरकारी
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">सरकारी</li>
+                        <li value="1">संस्थान</li>
+                        <li value="2">कूटनैतिक</li>
+                        <li value="3">निजी/ब्यक्तिगत</li>
+                        <li value="4">भाडा</li>
+                        <li value="5">प्रहरी</li>
+                        <li value="6">सैनिक</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="DataHeader">
+    <div class="DataHeaderText">चालक नंबर 1</div>
+    <div class="DataBody">
+        <div class="item" mydata='driver_name'>चालकको नाम<input class="normalinput" /></div>
+        <div class="item" mydata='driver_address'>चालकको ठेगाना<input class="normalinput" /></div>
+        <div class="item" mydata='driver_licence_no'>चालक अनुमति नंबर<input class="normalinput" /></div>
+        <div class="item" mydata='report_taking_office'>बितरण गर्ने कार्यालय<input class="normalinput" /></div>
+        <div class="item selectInside">लिंग
+            <ul class="normalselect" mydata='driver_sex'>
+                <div class="selection">
+                    पुरुष
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">पुरुष</li>
+                        <li value="1">महिला</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item" mydata='driver_age'>उमेर<input class="normalinput" /></div>
+        <div class="item selectInside">चालकको गल्ती
+            <ul class="normalselect" mydata='driver_fault'>
+                <div class="selection">
+                    छैन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छैन</li>
+                        <li value="1">ध्यान नभएको</li>
+                        <li value="2">अति छिटो</li>
+                        <li value="3">अति नजिक</li>
+                        <li value="4">संकेत नभएको</li>
+                        <li value="5">गलत तरिकले उछिनेको</li>
+                        <li value="6">गलत घुमाई</li>
+                        <li value="7">थकान/निंद्रा</li>
+                        <li value="8">अन्य</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">चालक अनुमति पत्र
+            <ul class="normalselect" mydata='driving_licence_type'>
+                <div class="selection">
+                    पूर्ण चालक अनुमति
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">पूर्ण चालक अनुमति</li>
+                        <li value="1">परीक्षण कल</li>
+                        <li value="2">अस्थायी चालक अनुमति</li>
+                        <li value="3">अनुमति नभएको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">चालक घाइते किसिम
+            <ul class="normalselect" mydata='driver_injury_type'>
+                <div class="selection">
+                    मृतयुजनक
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">मृतयुजनक</li>
+                        <li value="1">गंभीर घाइते</li>
+                        <li value="2">साधारण घाइते</li>
+                        <li value="3">घाइते नभएको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">रक्सी सेवन
+            <ul class="normalselect" mydata='alcohol_used'>
+                <div class="selection">
+                    संका नलागेको
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">संका नलागेको</li>
+                        <li value="1">संका भएको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सितपेटी/हेल्मेट प्रयोग भएको
+            <ul class="normalselect" mydata='seatbelt_or_helmet_used'>
+                <div class="selection">
+                    छ
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छ</li>
+                        <li value="1">छैन</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">हाताहात यात्रुहरु</div>
+    <div class="DataBody">
+        <div class="item" mydata='passanger_name'>यात्रुको नाम<input class="normalinput" /></div>
+        <div class="item" mydata='passanger_address'>यात्रुको ठेगाना<input class="normalinput" /></div>
+        <div class="item" mydata='vehicle_no'>गाडी नंबर<input class="normalinput" /></div>
+        <div class="item selectInside">लिंग
+            <ul class="normalselect" mydata='passanger_sex'>
+                <div class="selection">
+                    पुरुष
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">पुरुष</li>
+                        <li value="1">महिला</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item" mydata='passanger_age'>उमेर<input class="normalinput" /></div>
+        <div class="item selectInside">गम्भीर्यता
+            <ul class="normalselect" mydata='passanger_injury_seriousness'>
+                <div class="selection">
+                    मृत्यु
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">मृत्यु</li>
+                        <li value="1">गंभीर घाइते</li>
+                        <li value="2">साधारण घाइते</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">यात्रुको स्थिति
+            <ul class="normalselect" mydata='passanger_condition'>
+                <div class="selection">
+                    अगाडिको सीट
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">अगाडिको सीट</li>
+                        <li value="1">पछाडिको सीट</li>
+                        <li value="2">मोटर/साइकिल यात्रु</li>
+                        <li value="3">बस यात्रु</li>
+                        <li value="4">बाहिर बसेको</li>
+                        <li value="5">बाहिर उभिएको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">यात्रुको गतिभीधी
+            <ul class="normalselect" mydata='passanger_action'>
+                <div class="selection">
+                    छैन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छैन</li>
+                        <li value="1">चाड्दै गरेको</li>
+                        <li value="2">ओर्लदै गरेको</li>
+                        <li value="3">खसेको</li>
+                        <li value="4">अन्य</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">सितपेटी/हेल्मेट
+            <ul class="normalselect" mydata='passanger_seatbelt_or_helmet_used'>
+                <div class="selection">
+                    छ
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छ</li>
+                        <li value="1">छैन</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="DataHeader">
+    <div class="DataHeaderText">हाताहात बटुवाहरु</div>
+    <div class="DataBody">
+        <div class="item" mydata='pedestrian_name'>बटुवको नाम<input class="normalinput" /></div>
+        <div class="item" mydata='pedestrian_address'>बटुवको ठेगाना<input class="normalinput" /></div>
+        <div class="item selectInside">लिंग
+            <ul class="normalselect" mydata='pedestrian_sex'>
+                <div class="selection">
+                    पुरुष
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">पुरुष</li>
+                        <li value="1">महिला</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item" mydata='pedestrian_age'>उमेर<input class="normalinput" /></div>
+        <div class="item selectInside">गम्भीर्यता
+            <ul class="normalselect" mydata='pedestrian_injury_seriousness'>
+                <div class="selection">
+                    मृत्यु
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">मृत्यु</li>
+                        <li value="1">गंभीर घाइते</li>
+                        <li value="2">साधारण घाइते</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">बटुवाको स्थिति
+            <ul class="normalselect" >
+                <div class="selection">
+                    अगाडिको सीट
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">अगाडिको सीट</li>
+                        <li value="1">पछाडिको सीट</li>
+                        <li value="2">मोटर/साइकिल यात्रु</li>
+                        <li value="3">बस यात्रु</li>
+                        <li value="4">बाहिर बसेको</li>
+                        <li value="5">बाहिर उभिएको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">बटुवाको गतिभीधी
+            <ul class="normalselect" mydata='pedestrian_action'>
+                <div class="selection">
+                    छैन
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">छैन</li>
+                        <li value="1">बातों कट्दै</li>
+                        <li value="2">बीच बाटोमा हिंडदै</li>
+                        <li value="3">बाटो छेउ हिंडदै</li>
+                        <li value="4">बाटोमा खेलीरहेको</li>
+                        <li value="5">फुटपथमा</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">बाटोमा बटुवाको स्थान
+            <ul class="normalselect" mydata='pedestrian_condition'>
+                <div class="selection">
+                    जेब्रा क्रासिंगमा
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">जेब्रा क्रासिंगमा</li>
+                        <li value="1">जेब्रा क्रासिंगको ५० मेटर भित्र</li>
+                        <li value="1">बेचको आश्रय/मिडियन</li>
+                        <li value="1">सी. नं. १ देखि ३ सम्म बहेकले सडकको बीच</li>
+                        <li value="1">सडकबाट बाहिर बाटोमा/फुटपथमा</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="item selectInside">रक्सी सेवन
+            <ul class="normalselect" mydata='pedestrian_alcohol_used'>
+                <div class="selection">
+                    संका नलागेको
+                </div>
+                <div class="liConatiner">
+                    <div class="liItems">
+                        <li value="0">संका नलागेको</li>
+                        <li value="1">संका भएको</li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>   
+</body>
+</html>
